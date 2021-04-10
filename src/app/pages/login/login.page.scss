@@ -1,0 +1,14 @@
+#logo-div {
+  height: 40%;
+  display: flex;
+  align-items: center; //alinhamento vertical
+  justify-content: center;
+
+  h3 {
+    text-align: center;
+  }
+
+  img {
+    height: 150px;
+  }
+}
