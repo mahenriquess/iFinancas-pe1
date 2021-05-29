@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'topo-login',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./topo-login.component.scss'],
 })
 export class TopoLoginComponent implements OnInit {
+  @Input() title;
 
   constructor() { }
 
