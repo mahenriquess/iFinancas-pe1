@@ -25,7 +25,6 @@ export class LoginPage implements OnInit {
   login(){
     const user = this.loginForm.value;
     this.service.login(user);
-    console.log(user);
   }
 
 }

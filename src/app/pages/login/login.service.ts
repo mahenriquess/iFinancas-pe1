@@ -12,15 +12,15 @@ export class LoginService {
   ) { }
 
   login(user){
-    if(user.email === "aluno@ifsp.edu.br" && user.password=== '12345678'){
-      //redireciona para a home
+    if (user.email === 'aluno@ifsp.edu.br' && user.password === '12345678'){
+      // redireciona para a home
       this.nav.navigateForward('home');
     } else {
-      //exibe mensagem de erro
+      // exibe mensagem de erro
       this.showError();
     }
   }
-  
+
   private async showError(){
     const item = await this.toast.create({
       message: 'Dados de acesso incorretos',
@@ -28,5 +28,13 @@ export class LoginService {
     });
 
     item.present();
+  }
+
+  createUser(user){
+
+  }
+
+  recoverPass(email){
+
   }
 }
