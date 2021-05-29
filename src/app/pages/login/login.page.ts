@@ -1,5 +1,6 @@
+import { LoginService } from './login.service';
 import { Component, OnInit } from '@angular/core';
-import { NavController, ToastController } from '@ionic/angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -7,34 +8,24 @@ import { NavController, ToastController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  password;
-  email;
+  loginForm: FormGroup;
 
   constructor(
-    private nav: NavController,
-    private toast: ToastController
+    private builder: FormBuilder,
+    private service: LoginService
   ) { }
 
   ngOnInit() {
-  }
-
-  validate(){
-    if(this.email === "aluno@ifsp.edu.br" && this.password=== '12345678'){
-      //redireciona para a home
-      this.nav.navigateForward('home');
-    } else {
-      //exibe mensagem de erro
-      this.showError();
-    }
-  }
-
-  private async showError(){
-    const item = await this.toast.create({
-      message: 'Dados de acesso incorretos',
-      duration: 3000
+    this.loginForm = this.builder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
     });
+  }
 
-    item.present();
+  login(){
+    const user = this.loginForm.value;
+    this.service.login(user);
+    console.log(user);
   }
 
 }
